@@ -37,10 +37,14 @@ Po uruchomieniu nośnika zostaniemy poproszeni o skonfigurowanie LAGG, VLAN oraz
 
 Po zakończonej instalacji i restarcie urządzenia konfiguracja wstępna przeprowadzana jest w interfejsie graficznym dostępnym pod adresem 192.168.1.1. Po zalogowaniu rozpocznie się konfiguracja. W trakcie konfiguracji ustawiłem nazwę hosta, język, strefę czasową i domenę (ważne żeby domeną nie było .local ze względu na konflikty z mDNS, zostawiłem domyśłne .internal, i żeby wybrać odpowiednią strefę czasową). W późniejszych krokach zezwoliłem również na połączenia z sieci prywatnych na interfejsie WAN, ze względu na to że urządzenie aktualnie znajduje się w sieci prywatnej, wyłączyłem serwer DHCP działający na porcie LAN optymalizację pod Multiwan i automatyczną rejestrację DHCP/DNS, i zostawiłem domyślne ustawienia DNS. Poszczególne funckje i usługi będą konfigurowane w późniejszym czasie. Po wstępnej konfiguracji należy zaktualizować system wybierając opcję "check for updates" na ekranie dashboard, a następnie "update".
 
+### 5. Serwer NTP
+
+Istnieje możliwość, że mimo wybrania odpowiedniej strefy czasowej czas systemowy będzie przesunięty o kilka godzin. W moim przypadku winowajcą były domyślne serwery NTP z którymi zapora nie mogła się połączyć. W celu modyfikacji puli serwerów należy przejść do zakładki **Services** > **Network Time** > **General** i dodać adresy. Wykorzystałem serwery udostępnianie przez Główny Urząd Miar: _tempus1.gum.gov.pl_ i _tempus2.gum.gov.pl_. Jeżeli zakładka **Services** > **Network Time** > **Status** pokazuje aktywne połączenie (_Active Peer_, należy poczekać kilka minut), a czas pokazywany przez GUI wciąż jest nieprawidłowy, należy zaktualizować zaporę.
+
 ## Konfiguracja
 
-Interfejs LAN - wbudowany.
-Intefejs WLAN - broadcom 0 (broadcom 1 aktualnie nieużywany).
+Interfejs LAN - wbudowany (re0)
+Intefejs WLAN - broadcom 0  (bge0)
 System plików - ZFS
 
 
@@ -66,6 +70,7 @@ Okno logowania do zapory ogniowej, po zalogowaniu dashboard.
 ![Okno widoczne po pierwszym zalogowaniu do interfejsu graficznego.](../screenshots/OPNsense-conf-wizard.png "Okno widoczne po pierwszym zalogowaniu do interfejsu graficznego.")
 ![Konfiguracja podstawowa](../screenshots/OPNsense-conf-general.png "Konfiguracja podstawowa")
 ![Dashboard po zainstalowaniu.](../screenshots/OPNsense-dashboard.png "Dashboard po zainstalowaniu.")
+![Okno puli serwerów NTP.](../screenshots/OPNsense-conf-NTP.png "Okno statusów .")
 
 ## Rezultat
 

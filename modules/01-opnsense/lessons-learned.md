@@ -2,13 +2,13 @@
 
 ## Problemy i rozwiązania
 
-### Problem
+### Nieprawidłowy czas systemowy
 
-**Objaw:**
+**Objaw:** Czas systemowy przesunięty o dwie godziny do tyłu, mimo wybrania odpowiedniej strefy czasowej.
 
-**Przyczyna:**
+**Przyczyna:** Brak połączenia z serwerami NTP.
 
-**Rozwiązanie:**
+**Rozwiązanie:** Dodanie do puli serwerów NTP adresów _tempus1.gum.gov.pl_ i _tempus2.gum.gov.pl_.
 
 ---
 
