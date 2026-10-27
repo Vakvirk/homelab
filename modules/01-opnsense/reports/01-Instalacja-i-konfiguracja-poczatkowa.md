@@ -6,10 +6,11 @@ Zainstalowanie i przygotowanie do użycia platformy OPNsense.
 
 ## Środowisko
 
-- System: OPNsense
+- System: OPNsense 26.7
 - Urządzenie: HP t730 Thin Client
-- Wersja: OPNsense 26.7
-- Punkt startowy: Urządzenie z dostępem do internetu i możliwością przygotowania nośnika instalacyjnego (laptop z systemem Linux Mint), urządzenie na którym będzie instalowany OPNsense (HP t730 Thin Client)
+- Punkt startowy:
+    - Urządzenie z dostępem do internetu i możliwością przygotowania nośnika instalacyjnego (laptop z systemem Linux Mint),
+    - Urządzenie na którym będzie instalowany OPNsense (HP t730 Thin Client)
 
 ## Wykonanie
 
@@ -39,14 +40,14 @@ Po zakończonej instalacji i restarcie urządzenia konfiguracja wstępna przepro
 
 ### 5. Serwer NTP
 
-Istnieje możliwość, że mimo wybrania odpowiedniej strefy czasowej czas systemowy będzie przesunięty o kilka godzin. W moim przypadku winowajcą były domyślne serwery NTP z którymi zapora nie mogła się połączyć. W celu modyfikacji puli serwerów należy przejść do zakładki **Services** > **Network Time** > **General** i dodać adresy. Wykorzystałem serwery udostępnianie przez Główny Urząd Miar: _tempus1.gum.gov.pl_ i _tempus2.gum.gov.pl_. Jeżeli zakładka **Services** > **Network Time** > **Status** pokazuje aktywne połączenie (_Active Peer_, należy poczekać kilka minut), a czas pokazywany przez GUI wciąż jest nieprawidłowy, należy zaktualizować zaporę.
+Istnieje możliwość, że mimo wybrania odpowiedniej strefy czasowej czas systemowy będzie przesunięty o kilka godzin. W moim przypadku winowajcą były domyślne serwery NTP z którymi zapora nie mogła się połączyć. W celu modyfikacji puli serwerów należy przejść do zakładki **Services** > **Network Time** > **General** i dodać adresy. Wykorzystałem serwery udostępnianie przez Główny Urząd Miar: _tempus1.gum.gov.pl_ i _tempus2.gum.gov.pl_. Jeżeli zakładka **Services** > **Network Time** > **Status** pokazuje aktywne połączenie (_Active Peer_, należy poczekać kilka minut), a czas pokazywany przez GUI wciąż jest nieprawidłowy, należy uruchomić ponownie urządzenie.
 
 ## Konfiguracja
 
 Interfejs LAN - wbudowany (re0)
 Intefejs WLAN - broadcom 0  (bge0)
 System plików - ZFS
-
+Serwery NTP - _tempus1.gum.gov.pl_ i _tempus2.gum.gov.pl_
 
 ## Test
 
@@ -55,15 +56,15 @@ System plików - ZFS
 **Polecenie / czynność:**
 
 1. Ustawienie na urządzeniu statycznego adresu sieciowego znajdującego się w tej samej podsieci co adres interfejsu LAN zapory ogniowej. 
-2. Wejście poprzez przeglądarkę internetową do interfejsu graficznego znajdującego się pod adresem interfejsu LAN zapory ogniowej (192.168.1.1/24).
+2. Wejście poprzez przeglądarkę internetową do interfejsu graficznego znajdującego się pod adresem interfejsu LAN zapory ogniowej (192.168.1.1).
 
 **Oczekiwany wynik:**
 
-Okno logowania do zapory ogniowej, po zalogowaniu dashboard.
+GUI dostępne pod adresem 192.168.1.1
 
 **Rzeczywisty wynik:**
 
-Okno logowania do zapory ogniowej, po zalogowaniu dashboard.
+GUI dostępne pod adresem 192.168.1.1
 
 ## Screenshots
 
